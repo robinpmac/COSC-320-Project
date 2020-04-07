@@ -29,7 +29,6 @@ public class Testing {
 		time = System.currentTimeMillis() - time;
 		
 		System.out.printf("Load time = %.4f Seconds\n", ((double) time) / 1000);
-		
 		//Github Test
 		
 	}
