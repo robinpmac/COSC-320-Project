@@ -95,7 +95,15 @@ public class FlightSearch {
 			return true;
 	}
 	
-	public static 
+	public static ArrayList<FlightPlan> getAllPaths() {
+		ArrayList<FlightPlan> paths = new ArrayList<FlightPlan>();
+		Airport currNode = depLoc;
+		
+		
+		
+		
+		return paths;
+	}
 	
 	//Ignore for now
 	int minDistance(Airport currNode) {
