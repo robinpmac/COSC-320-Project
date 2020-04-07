@@ -13,6 +13,8 @@ public class Airport {
 	private ArrayList<Flight> inFlights;
 	private ArrayList<Flight> outFlights;
 	
+	private boolean visited;
+	
 	//Constructors
 	public Airport(String code) {
 		this.code = code;
@@ -22,6 +24,8 @@ public class Airport {
 		
 		this.inFlights = new ArrayList<Flight>();
 		this.outFlights = new ArrayList<Flight>();
+		
+		this.visited = false;
 	}
 	
 	public Airport(String code, String name, String country, String city) {
@@ -32,6 +36,8 @@ public class Airport {
 		
 		this.inFlights = new ArrayList<Flight>();
 		this.outFlights = new ArrayList<Flight>();
+		
+		this.visited = false;
 	}
 	//
 	
