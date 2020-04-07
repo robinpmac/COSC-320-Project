@@ -95,14 +95,16 @@ public class FlightSearch {
 			return true;
 	}
 	
-	public static ArrayList<FlightPlan> getAllPaths() {
-		ArrayList<FlightPlan> paths = new ArrayList<FlightPlan>();
+	//Find all paths from depLoc to arrLoc
+	public static ArrayList<Route> getAllPaths() {
+		ArrayList<Route> paths = new ArrayList<Route>();
 		Stack<Airport> s = new Stack<Airport>();
 		
 		Airport currNode = null;
 		ArrayList<Flight> tempOutFlights = null;
 		
 		s.push(depLoc);
+		paths.add(new Route(depLoc));
 		
 		while(s.isEmpty() == false) {
 			currNode = s.pop();
@@ -115,6 +117,8 @@ public class FlightSearch {
 					for(int i=0; i<tempOutFlights.size(); i++) {
 						s.push(tempOutFlights.get(i).getArrLoc());
 					}
+					
+					//if
 				}
 			}
 		}

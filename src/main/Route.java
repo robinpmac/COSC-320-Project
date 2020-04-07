@@ -3,23 +3,39 @@ package main;
 import java.util.ArrayList;
 
 public class Route {
-	private Airport depLoc;
+	private static int routeID = -1;
+	private int parentID;
+
 	private ArrayList<Airport> stops;
 	
-	public Route(Airport depLoc) {
-		this.depLoc = depLoc;
+	//For first Route
+	public Route(Airport loc) {
+		routeID++;
+		this.parentID = 0;
 		this.stops = new ArrayList<Airport>();
 		
-		this.stops.add(this.depLoc);
+		this.stops.add(loc);
+	}
+	
+	//For all subsequent Routes
+	public Route(Airport loc, Route parent) {
+		routeID++;
+		this.parentID = parent.getParentID();
+		this.stops = new ArrayList<Airport>();
+		
+		for(int i=0; i<parent.getStops().size(); i++) {
+			this.stops.add(parent.getStops().get(i));
+		}
 	}
 	
 	//Setters
-	public void setDepLoc(Airport depLoc) {this.depLoc = depLoc;}
+
 	//
 	
 	
 	//Getters
-	public Airport getDepLoc() {return this.depLoc;}
+	public int getRouteID() {return routeID;}
+	public int getParentID() {return this.parentID;}
 	public ArrayList<Airport> getStops() {return this.stops;}
 	//
 	
