@@ -13,7 +13,7 @@ public class Airport {
 	private ArrayList<Flight> inFlights;
 	private ArrayList<Flight> outFlights;
 	
-	private boolean visited;
+	private boolean discovered;
 	
 	//Constructors
 	public Airport(String code) {
@@ -25,7 +25,7 @@ public class Airport {
 		this.inFlights = new ArrayList<Flight>();
 		this.outFlights = new ArrayList<Flight>();
 		
-		this.visited = false;
+		this.discovered = false;
 	}
 	
 	public Airport(String code, String name, String country, String city) {
@@ -37,7 +37,7 @@ public class Airport {
 		this.inFlights = new ArrayList<Flight>();
 		this.outFlights = new ArrayList<Flight>();
 		
-		this.visited = false;
+		this.discovered = false;
 	}
 	//
 	
@@ -47,7 +47,7 @@ public class Airport {
 	public void setName(String name) {this.name = name;}
 	public void setCountry(String country) {this.country = country;}
 	public void setCity(String city) {this.city = city;}
-	public void setVisited(boolean isVisited) {this.visited = isVisited;}
+	public void setDiscovered(boolean val) {this.discovered = val;}
 	//
 	
 	
@@ -58,9 +58,9 @@ public class Airport {
 	public String getCity() {return this.city;}
 	
 	public ArrayList<Flight> getInFlights() {return this.inFlights;}
-	public ArrayList<Flight> getOutFLights() {return this.outFlights;}
+	public ArrayList<Flight> getOutFlights() {return this.outFlights;}
 	
-	public boolean isVisited() {return this.visited;}
+	public boolean isDiscovered() {return this.discovered;}
 	//
 	
 	
