@@ -54,7 +54,7 @@ public class Airport {
 	//Getters
 	public String getCode() {return this.code;}
 	public String getName() {return this.name;}
-	public String getCountr() {return this.country;}
+	public String getCountry() {return this.country;}
 	public String getCity() {return this.city;}
 	
 	public ArrayList<Flight> getInFlights() {return this.inFlights;}

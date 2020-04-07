@@ -16,6 +16,8 @@ public class FlightSearch {
 	private static Airport arrLoc = null;
 	
 	private static int numAirports;
+	
+	private static boolean isIntl;
 
 	//Pre-processing for the algorithm
 	public static void loadAll() {
@@ -30,6 +32,7 @@ public class FlightSearch {
 		}
 	}
 	
+	//Set the departure and arrival locations based on given airport codes
 	public static boolean setStartFinish() {
 		boolean loadSuccess = false;
 		boolean depLocLoad = false;
@@ -58,7 +61,11 @@ public class FlightSearch {
 		if(loadSuccess == false) {
 			depLoc = null;
 			arrLoc = null;
+		} else {
+			isIntl = checkIsIntl();
 		}
+		
+		
 		
 		return loadSuccess;
 	}
@@ -72,12 +79,29 @@ public class FlightSearch {
 			unvisited.add(airports.get(i));
 		}
 		
+		boolean loadSuccess = setStartFinish();
+		if(loadSuccess == false) {
+			System.out.println("Error Loading Departure and Arrival Locations.");
+			System.exit(0);
+		}
+		
 
 	}
 	
-	int minDistance() {
+	public static boolean checkIsIntl() {
+		if(depLoc.getCountry().equalsIgnoreCase(arrLoc.getCountry()))
+			return false;
+		else
+			return true;
+	}
+	
+	public static 
+	
+	//Ignore for now
+	int minDistance(Airport currNode) {
 		int min = Integer.MAX_VALUE;
 		int minIdx = -1;
+		
 		
 		
 		

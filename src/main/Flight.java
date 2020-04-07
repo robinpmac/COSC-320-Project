@@ -12,6 +12,7 @@ public class Flight {
 	private Airport arrivalLoc;
 	private double flightCost;
 	private int flightDur;		//In minutes
+	private boolean isIntl;
 	
 	private Calendar departureDate;
 	
@@ -26,6 +27,8 @@ public class Flight {
 		this.departureLoc = null;
 		this.arrivalLoc = null;
 		
+		this.isIntl = checkIsIntl();
+		
 		this.departureDate = Calendar.getInstance();
 	}
 	//
@@ -38,6 +41,7 @@ public class Flight {
 	public void setArrLoc(Airport airport) {this.arrivalLoc = airport;}
 	public void setFlightCost(double cost) {this.flightCost = cost;}
 	public void setFlightDur(int dur) {this.flightDur = dur;}
+	public void setIsIntl(boolean isIntl) {this.isIntl = isIntl;}
 	
 	public void setDepDate(int month, int day, int hour, int minute) {
 		this.departureDate.set(Calendar.YEAR, 2020);
@@ -59,6 +63,7 @@ public class Flight {
 	public Airport getArrLoc() {return this.arrivalLoc;}
 	public double getFlightCost() {return this.flightCost;}
 	public int getFlightDur() {return this.flightDur;}
+	public boolean getIsIntl() {return this.isIntl;}
 	public Calendar getDepDate() {return this.departureDate;}
 	//
 	
@@ -95,6 +100,14 @@ public class Flight {
 		return str.toString();
 	}
 	
+	public boolean checkIsIntl() {
+		if(this.departureLoc.getCountry().equalsIgnoreCase(this.arrivalLoc.getCountry()))
+			return false;
+		else
+			return true;
+	}
+	
+	//Ignore
 	public void delayFlight(double delayTime) {
 		
 	}
