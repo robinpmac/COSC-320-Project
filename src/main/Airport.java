@@ -47,6 +47,7 @@ public class Airport {
 	public void setName(String name) {this.name = name;}
 	public void setCountry(String country) {this.country = country;}
 	public void setCity(String city) {this.city = city;}
+	public void setVisited(boolean isVisited) {this.visited = isVisited;}
 	//
 	
 	
@@ -58,6 +59,8 @@ public class Airport {
 	
 	public ArrayList<Flight> getInFlights() {return this.inFlights;}
 	public ArrayList<Flight> getOutFLights() {return this.outFlights;}
+	
+	public boolean isVisited() {return this.visited;}
 	//
 	
 	
