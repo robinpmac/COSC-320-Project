@@ -15,7 +15,7 @@ public abstract class CSVReader {
 	public static ArrayList<Airport> loadAirports() {
 		final int fileSize = 7700;
 		
-		String csvFile = "MasterAirportList.csv";
+		String csvFile = "CanadaAirportList.csv";
 		BufferedReader br = null;
 		String line = "";
 		String csvSplitBy = ",";
@@ -86,12 +86,14 @@ public abstract class CSVReader {
 				 * info[2] = Arrival Location IATA Code
 				 * info[3] = Flight Cost
 				 * info[4] = Flight Duration
+				 * info[5] = Layover Duration
 				 */
 				
 				double cost = Double.valueOf(info[3]);
 				int flightDur = Integer.valueOf(info[4]);
+				int Layover = Integer.valueOf(info[5]);
 				
-				flights.add(new Flight(info[0], info[1], info[2], cost, flightDur));
+				flights.add(new Flight(info[0], info[1], info[2], cost, flightDur,Layover));
 			}
 			
 		} catch(FileNotFoundException e) {

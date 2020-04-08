@@ -12,16 +12,17 @@ public class Flight {
 	private Airport arrivalLoc;
 	private double flightCost;
 	private int flightDur;		//In minutes
-	
+	private int Layover; //In minutes
 	private Calendar departureDate;
 	
 	//Constructors
-	public Flight(String flightNum, String depLoc, String arrLoc, double flightCost, int flightDur) {
+	public Flight(String flightNum, String depLoc, String arrLoc, double flightCost, int flightDur, int Layover) {
 		this.flightNum = flightNum;
 		this.departureLocStr = depLoc;
 		this.arrivalLocStr = arrLoc;
 		this.flightCost = flightCost;
 		this.flightDur = flightDur;
+		this.Layover = Layover;
 		
 		this.departureLoc = null;
 		this.arrivalLoc = null;
@@ -38,7 +39,7 @@ public class Flight {
 	public void setArrLoc(Airport airport) {this.arrivalLoc = airport;}
 	public void setFlightCost(double cost) {this.flightCost = cost;}
 	public void setFlightDur(int dur) {this.flightDur = dur;}
-	
+	public void setLayover(int Layover) {this.Layover = Layover;}
 	public void setDepDate(int month, int day, int hour, int minute) {
 		this.departureDate.set(Calendar.YEAR, 2020);
 		this.departureDate.set(Calendar.MONTH, month);
@@ -60,6 +61,7 @@ public class Flight {
 	public double getFlightCost() {return this.flightCost;}
 	public int getFlightDur() {return this.flightDur;}
 	public Calendar getDepDate() {return this.departureDate;}
+	public int getLayover() {return this.Layover;}
 	//
 	
 	
