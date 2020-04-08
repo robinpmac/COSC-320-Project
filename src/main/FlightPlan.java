@@ -15,7 +15,7 @@ public class FlightPlan {
 	private Airport arrLoc;
 	
 	private ArrayList<Flight> flights; 
-	
+		
 	//Constructors
 	public FlightPlan(Airport depLoc, Airport arrLoc) {
 		this.totalCost = 0;
