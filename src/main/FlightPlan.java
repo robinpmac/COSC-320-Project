@@ -28,6 +28,7 @@ public class FlightPlan {
 		this.depMonth = 0;
 		this.depDay = 0;
 		
+		
 		this.flights = new ArrayList<Flight>();
 	}
 	
@@ -85,6 +86,8 @@ public class FlightPlan {
 	
 
 	//Methods
+	public void addFlight(Flight flight) {this.flights.add(flight);}
+	
 	public void calculateFlightPlan() {
 		double cost = 0;
 		int flightTime = 0;

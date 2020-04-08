@@ -1,8 +1,6 @@
 package main;
 
 import java.util.*;
-import java.lang.*;
-import java.io.*;
 
 public class FlightSearch {
 	
@@ -96,45 +94,61 @@ public class FlightSearch {
 	}
 	
 	//Find all paths from depLoc to arrLoc
-	public static ArrayList<Route> getAllPaths() {
-		ArrayList<Route> paths = new ArrayList<Route>();
+	public static ArrayList<Route> getAllRoutes() {
+
+		ArrayList<Route> routes = new ArrayList<Route>();
 		Stack<Airport> s = new Stack<Airport>();
 		
 		Airport currNode = null;
 		ArrayList<Flight> tempOutFlights = null;
+		//Route currRoute = null;
+		//int tempID = 0;
+		//boolean isPath = false;
 		
 		s.push(depLoc);
-		paths.add(new Route(depLoc));
+		//routes.add(new Route(depLoc));
 		
+		//While there are items in the stack
 		while(s.isEmpty() == false) {
 			currNode = s.pop();
-			
+			//currRoute = getRouteByID(routes, tempID);
+				
 			if(currNode.isDiscovered() == false) {
 				currNode.setDiscovered(true);
 				tempOutFlights = currNode.getOutFlights();
 				
+				//Checks to make sure outbound flight list for node isn't empty
 				if(tempOutFlights.isEmpty() == false) {
 					for(int i=0; i<tempOutFlights.size(); i++) {
 						s.push(tempOutFlights.get(i).getArrLoc());
+						//routes.add(new Route(tempOutFlights.get(i).getArrLoc(), currRoute));
 					}
-					
-					//if
 				}
 			}
 		}
 			
-		return paths;
+		return routes;
 	}
 	
-	//Ignore for now
-	int minDistance(Airport currNode) {
-		int min = Integer.MAX_VALUE;
-		int minIdx = -1;
+	public static Route getRouteByID(ArrayList<Route> routes, int ID) {
+		for(int i=0; i<routes.size(); i++) {
+			if(routes.get(i).getRouteID() == ID)
+				return routes.get(i);
+		}
 		
-		
-		
-		
-		return -1;
+		return null;
 	}
+	
+	public static boolean checkRoute(Route route) {
+		Airport start = route.getStops().get(0);
+		Airport end = route.getStops().get(route.getStops().size()-1);
+		
+		if(start.getCode().equals(depLoc.getCode()) && end.getCode().equals(arrLoc.getCode())) {
+			route.setIsComplete(true);
+			return true;
+		} else
+			return false;
+	}
+	
 
 }
