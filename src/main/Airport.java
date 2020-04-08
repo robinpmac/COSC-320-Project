@@ -14,6 +14,7 @@ public class Airport {
 	private ArrayList<Flight> outFlights;
 	
 	private boolean discovered;
+	private double weight;
 	
 	//Constructors
 	public Airport(String code) {
@@ -26,6 +27,7 @@ public class Airport {
 		this.outFlights = new ArrayList<Flight>();
 		
 		this.discovered = false;
+		this.weight = (double) Integer.MAX_VALUE;;
 	}
 	
 	public Airport(String code, String name, String country, String city) {
@@ -38,6 +40,7 @@ public class Airport {
 		this.outFlights = new ArrayList<Flight>();
 		
 		this.discovered = false;
+		this.weight = (double) Integer.MAX_VALUE;
 	}
 	//
 	
@@ -48,6 +51,7 @@ public class Airport {
 	public void setCountry(String country) {this.country = country;}
 	public void setCity(String city) {this.city = city;}
 	public void setDiscovered(boolean val) {this.discovered = val;}
+	public void setWeight(double weight) {this.weight = weight;}
 	//
 	
 	
@@ -61,6 +65,7 @@ public class Airport {
 	public ArrayList<Flight> getOutFlights() {return this.outFlights;}
 	
 	public boolean isDiscovered() {return this.discovered;}
+	public double getWeight() {return this.weight;}
 	//
 	
 	

@@ -83,6 +83,8 @@ public class FlightSearch {
 			System.exit(0);
 		}
 		
+		depLoc.setWeight(0);
+		
 
 	}
 	
@@ -94,7 +96,7 @@ public class FlightSearch {
 	}
 	
 	//Gets the min distance between current node and all adjacent nodes
-	public static int minDistance(Flight prevFlight, Airport airport, ArrayList<Airport> unvisited) {
+	public static Flight minDistance(Flight prevFlight, Airport airport, ArrayList<Airport> unvisited) {
 		double tempCost = 1;
 		double tempFlightDur = 1;
 		double tempLayover = 1;
@@ -104,7 +106,7 @@ public class FlightSearch {
 		double tempWeight = 0;
 		
 		double min = (double) Integer.MAX_VALUE;
-		int minIdx = -1;
+		Flight minFlight = null;
 		
 		ArrayList<Flight> adjacent = airport.getOutFlights();
 		
@@ -113,7 +115,7 @@ public class FlightSearch {
 			tempAirport = tempFlight.getArrLoc();
 			
 			//If input airport is not depLoc, get layover time
-			if(!airport.getCode().equals(depLoc.getCode())) {
+			if(prevFlight != null) {
 				tempLayover = getLayoverTime(prevFlight, tempFlight);
 			}
 			
@@ -124,15 +126,22 @@ public class FlightSearch {
 			
 			if(!unvisited.contains(tempAirport) && tempWeight < min) {
 				min = tempWeight;
-				minIdx = i;
+				minFlight = tempFlight;
 			}
 		}
 		
-		return minIdx;
+		if(minFlight.getArrLoc().getWeight() > min + airport.getWeight())
+			minFlight.getArrLoc().setWeight(min + airport.getWeight());
+			
+		return minFlight;
 	}
 	
 	public static void dijkstras() {	
 		ArrayList<Airport> unvisited = new ArrayList<Airport>(airports.size());
+		HashMap<Airport, Double> tracker = new HashMap<Airport, Double>();
+		Airport tempAirport = depLoc;
+		Flight tempFlight = null;
+		int count = 0;
 		
 		//Copy all airports into unvisited list
 		//If route isn't international, only adds airports in same country
@@ -146,6 +155,26 @@ public class FlightSearch {
 				unvisited.add(airports.get(i));
 			}
 		}
+		
+		while(!tempAirport.getCode().equals(arrLoc.getCode())) {
+			//Just tracks whether its the starting location or not
+			if(count == 0) {
+				tracker.put(tempAirport, tempAirport.getWeight());
+				tempFlight = minDistance(null, tempAirport, unvisited);
+				unvisited.remove(tempAirport);
+			} else {
+				tempAirport = tempFlight.getArrLoc();
+				tracker.put(tempAirport, tempAirport.getWeight());				
+				tempFlight = minDistance(tempFlight, tempAirport, unvisited);
+				
+				
+			}
+			
+			
+
+		}
+		
+		
 		
 		
 		
