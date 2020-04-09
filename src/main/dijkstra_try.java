@@ -18,7 +18,10 @@ public class dijkstra_try {
 	public static List<String> shortest = new ArrayList<>();
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		long t1, t2;
+		int totalTime = 0;
+		
+		t1 = System.currentTimeMillis();
 		//matrix of shortest distance
 		adMatrix = new int[numVertex][numVertex];
 			//Initialize the Shortest Distance matrix
@@ -47,6 +50,9 @@ public class dijkstra_try {
 			}
 			System.out.println("");
 		}//
+		t1 = System.currentTimeMillis() - t1;
+		totalTime += Math.toIntExact(t1);
+		
 		Scanner in = new Scanner(System.in);
 		System.out.println("Please choose a starting point:");
 		for(int m = 0; m < numVertex;m++) {
@@ -56,7 +62,13 @@ public class dijkstra_try {
 		int src = Integer.parseInt(in.next());
 		System.out.println("Please choose a destination:");
 		int des = Integer.parseInt(in.next());
+		
+		//Algorithm and Timer
+		t2 = System.currentTimeMillis();
 		dijkstra(adMatrix,src);
+		t2 = System.currentTimeMillis() - t2;
+		totalTime += Math.toIntExact(t2);
+
 		System.out.println("The whole is :");
 		for(String s : shortest) {
 			System.out.print(s+ "->");
@@ -71,7 +83,10 @@ public class dijkstra_try {
 			System.out.print(shortest.get(counter)+ "->");
 			counter++;
 		}
+		
+		in.close();
 		System.out.println(shortest.get(counter));
+		System.out.printf("Total Algorithm Running Time: %d ms%n", totalTime);
 		}
 
 	
